@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Converter</title>
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            var formData = new FormData(event.target);
+            fetch('http://TODO-API', {
+                method: 'POST',
+                body: formData
+            }).then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error(error));
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Invoice Converter</h2>
+    <form onsubmit="submitForm(event)" enctype="multipart/form-data">
+        <label for="zipFile">Select Zip File:</label>
+        <input type="file" name="zipFile" id="zipFile" accept=".zip" required>
+        <br>
+        <input type="submit" value="Upload Invoices">
+    </form>
+</body>
+
+</html>
